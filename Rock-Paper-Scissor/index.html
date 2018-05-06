@@ -15,20 +15,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <span class="score-title">Score</span>
+                <span class="score-title p1">Score</span>
                 <ul class="score" id="score-p1">
                 </ul>
             </div>
             <div class="col-md-4 bg-screen">
                 <h1>Game mode</h1>
                 <ul class="list-group">
-                    <li class="list-group-item select-player" id="0" onclick="playerSelect(this)">Player vs Player</li>
                     <li class="list-group-item select-player" id="1" onclick="playerSelect(this)">Player vs Computer</li>
                     <li class="list-group-item select-player" id="2" onclick="playerSelect(this)">Computer vs Computer</li>
                 </ul>
             </div>
             <div class="col-md-4">
-                <span class="score-title">Score</span>
+                <span class="score-title p2">Score</span>
                 <ul class="score" id="score-p2">
                 </ul>
             </div>
@@ -55,8 +54,20 @@
                 </ul>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12 ">
+                <button class="btn btn-primary" onclick="clearStars()">New Game</button>
+            </div>
+        </div>
     </div>
-
+    <div class="modal-result hide" id="modal">
+        <div class="content">
+            <div class="close" onclick="closeModal()">X</div>
+            <div class="text-result">
+                
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

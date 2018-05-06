@@ -17,6 +17,15 @@ function playerSelect(element)
     element.style.fontWeight = '900';
     gameMode = element.id;
     console.log(gameMode);
+
+    if(gameMode == 1){
+        document.querySelector('.p1').innerHTML = 'Score: Player';
+        document.querySelector('.p2').innerHTML = 'Score: Computer';
+    }else{
+        document.querySelector('.p1').innerHTML = 'Score: Computer';
+        document.querySelector('.p2').innerHTML = 'Score: Computer';
+    }
+
 }
 
 function playerOne (element)
@@ -119,7 +128,8 @@ function update ()
 {
     console.log('update');
     if(playerOneMove === playerTwoMove){
-        alert('Empate');
+        var message = 'Empate';
+        showModal(message);
     }else{
         if(playerOneMove === "rock"){
             if(playerTwoMove === "paper" ){
@@ -130,7 +140,8 @@ function update ()
                 img.setAttribute('height', '20px');
                 node.appendChild(img);
                 document.getElementById("score-p2").appendChild(node);
-                alert(playerOneMove+" vs "+ playerTwoMove+" - Player 2 Wins");
+                var message = playerOneMove+" vs "+ playerTwoMove+" - Player 2 Wins";
+                showModal(message);
             }else{
                 var node = document.createElement("LI");
                 var img = document.createElement("IMG");
@@ -139,7 +150,8 @@ function update ()
                 img.setAttribute('height', '20px');
                 node.appendChild(img);
                 document.getElementById("score-p1").appendChild(node);
-                alert(playerOneMove+" vs "+ playerTwoMove+" - Player 1 Wins");
+                var message = playerOneMove+" vs "+ playerTwoMove+" - Player 1 Wins";
+                showModal(message);
             }
         }else if(playerOneMove === "paper"){
             if(playerTwoMove === "rock" ){
@@ -150,7 +162,8 @@ function update ()
                 img.setAttribute('height', '20px');
                 node.appendChild(img);
                 document.getElementById("score-p1").appendChild(node);
-                alert(playerOneMove+" vs "+ playerTwoMove+" - Player 1 Wins");
+                var message = playerOneMove+" vs "+ playerTwoMove+" - Player 1 Wins";
+                showModal(message);
             }else{
                 var node = document.createElement("LI");
                 var img = document.createElement("IMG");
@@ -159,7 +172,8 @@ function update ()
                 img.setAttribute('height', '20px');
                 node.appendChild(img);
                 document.getElementById("score-p2").appendChild(node);
-                alert(playerOneMove+" vs "+ playerTwoMove+" - Player 2 Wins");
+                var message = playerOneMove+" vs "+ playerTwoMove+" - Player 2 Wins";
+                showModal(message);
             }
         }else{
             if(playerTwoMove === "rock" ){
@@ -170,7 +184,8 @@ function update ()
                 img.setAttribute('height', '20px');
                 node.appendChild(img);
                 document.getElementById("score-p2").appendChild(node);
-                alert(playerOneMove+" vs "+ playerTwoMove+" - Player 2 Wins");
+                var message = playerOneMove+" vs "+ playerTwoMove+" - Player 2 Wins";
+                showModal(message);
             }else{
                 var node = document.createElement("LI");
                 var img = document.createElement("IMG");
@@ -179,10 +194,34 @@ function update ()
                 img.setAttribute('height', '20px');
                 node.appendChild(img);
                 document.getElementById("score-p1").appendChild(node);
-                alert(playerOneMove+" vs "+ playerTwoMove+" - Player 1 Wins");
+                var message = playerOneMove+" vs "+ playerTwoMove+" - Player 1 Wins";
+                showModal(message);
             }
         }
         console.log('dif');
     }
 }
+function closeModal(){
+    var modal = document.getElementById('modal');
+    modal.classList.add("hide");
+    setTimeout(function(){
+        modal.style.display = "none";
+    }, 500);
+    
+}
+function showModal(message){
+    var text = document.querySelector('.text-result');
+    text.innerHTML = message;
+    var modal = document.getElementById('modal');
+    modal.style.display = "block";
+    setTimeout(function(){
+        modal.classList.remove("hide");
+        
+    }, 500);
+    
+}
+function clearStars(){
 
+    location.reload(); 
+
+}
