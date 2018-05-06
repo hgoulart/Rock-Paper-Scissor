@@ -1,0 +1,91 @@
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+.container{
+    background-color: #bfaf9b;
+    height: 100vh;
+}
+.bg-screen{
+    background-color: tan;
+    border: 1px solid #ccc;
+}
+.select-player{
+    background-color: tan;
+    cursor: pointer;
+}
+.score-title{
+    color: #fff;
+}
+h1{
+    text-align: center;
+    padding: 20px;
+}
+ul{
+    list-style: none;
+}
+.player-two, .player-one{
+    width: 80px;
+    margin: 0 auto;
+    background-color: tan;
+    border: 1px solid #ccc;
+}
+.bg-game{
+    margin-top: 30px;
+}
+.game-container{
+    margin-top: 30px;
+    border: 1px solid #ccc;
+    background-color: tan;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.list-group-item{
+    border: 1px solid transparent;
+    border-radius: 50%;
+}
+.list-group-item:first-child, .list-group-item:last-child{
+    border: 1px solid transparent;
+    border-radius: 50%;
+}
+.first-player, .second-player{
+    width: 78px;
+    height: 78px;
+    background-image: url( '../images/sprite.png' );
+    background-size: 485px;
+    color: transparent;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    opacity: 0.8;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+}
+.first-player:hover{
+    opacity: 1;
+    transform: translate3d(15px, 0px, 0px);
+    cursor: pointer;
+}
+.second-player:hover{
+    opacity: 1;
+    transform: translate3d(-15px, 0px, 0px);
+    cursor: pointer;
+}
+.scissor {
+    background-position:  0px 0px;
+}
+.rock {
+    background-position: 183px 0px;
+}
+.paper {
+    background-position: 258px 0px;
+}
+.score{
+    padding: 0;
+}
+.select{
+    background-position: 110px 0px;
+}
+.score li{
+    display: inline-block;
+    margin: 0 2px;
+}

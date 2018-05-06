@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="Content/css/style.css">
+        <script src="Content/js/game.js"></script>
+        <title>Rock, Paper & Scissor</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <span class="score-title">Score</span>
+                <ul class="score" id="score-p1">
+                </ul>
+            </div>
+            <div class="col-md-4 bg-screen">
+                <h1>Game mode</h1>
+                <ul class="list-group">
+                    <li class="list-group-item select-player" id="0" onclick="playerSelect(this)">Player vs Player</li>
+                    <li class="list-group-item select-player" id="1" onclick="playerSelect(this)">Player vs Computer</li>
+                    <li class="list-group-item select-player" id="2" onclick="playerSelect(this)">Computer vs Computer</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <span class="score-title">Score</span>
+                <ul class="score" id="score-p2">
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 bg-game">
+                <ul class="list-group player-one">
+                    <li class="list-group-item first-player rock" onclick="playerOne(this)">rock</li>
+                    <li class="list-group-item first-player paper" onclick="playerOne(this)">paper</li>
+                    <li class="list-group-item first-player scissor" onclick="playerOne(this)">scissor</li>
+                </ul>
+            </div>
+            <div class="col-md-2 game-container">
+                <div class="first-player select" id="boxOne"></div>
+            </div>
+            <div class="col-md-2 game-container">
+                <div class="second-player select" id="boxTwo"></div>
+            </div>                
+            <div class="col-md-4 bg-game">
+                <ul class="player-two list-group">
+                    <li class="list-group-item second-player rock" onclick="playerTwo(this)">rock</li>
+                    <li class="list-group-item second-player paper" onclick="playerTwo(this)">paper</li>
+                    <li class="list-group-item second-player scissor" onclick="playerTwo(this)">scissor</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>
