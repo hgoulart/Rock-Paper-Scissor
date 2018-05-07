@@ -72,7 +72,7 @@ ul{
     cursor: pointer;
 }
 .scissor {
-    background-position:  0px 0px;
+    background-position:  -75px 0px;
 }
 .rock {
     background-position: 183px 0px;
@@ -96,7 +96,7 @@ ul{
     top: 0;
     width: 100%;
     height: 100vh;
-    background-color: transparent;
+    background-color: rgba(0,0,0,0.2);
     transition: all 0.5s ease-in-out;
 }
 .content{
@@ -127,4 +127,11 @@ ul{
     margin: 0 auto;
     display: block;
     margin-top: 30px;
+}
+img{
+    transition: all 0.6s cubic-bezier(0.48, 0.21, 0.48, 1.63);
+}
+img.anime{
+    height: 20px;
+    width: 20px;
 }
