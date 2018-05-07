@@ -4,6 +4,7 @@ body{
 .container{
     background-color: #bfaf9b;
     height: 100vh;
+    padding-top: 30px;
 }
 .bg-screen{
     background-color: tan;
@@ -95,7 +96,7 @@ ul{
     top: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0,0,0,0.5);
+    background-color: transparent;
     transition: all 0.5s ease-in-out;
 }
 .content{
@@ -108,7 +109,7 @@ ul{
     position: absolute;
     width: 300px;
     height: 200px;
-    top: 300px;
+    top: 280px;
     left: 0;
     right: 0;
     margin: auto;
@@ -116,9 +117,14 @@ ul{
 .close{
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 15px;
 }
 .modal-result.hide{
     opacity: 0;
 
+}
+.btn{
+    margin: 0 auto;
+    display: block;
+    margin-top: 30px;
 }

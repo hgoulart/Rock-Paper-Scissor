@@ -31,7 +31,8 @@ function playerSelect(element)
 function playerOne (element)
 {
     if(gameMode == undefined){
-        alert("escolha um modo de jogo");
+        var message = "Choose a game mode first.";
+        showModal(message);
     }
     else if(gameMode == 0){
 
@@ -58,8 +59,6 @@ function playerOne (element)
         classSelected.classList.remove("paper");
         classSelected.classList.add(playerOneMove);
 
-        console.log(playerOneMove);
-
         var bgPlayer = document.querySelectorAll('.first-player');
 
         for(var i = 0; i < bgPlayer.length; i++)
@@ -69,7 +68,6 @@ function playerOne (element)
     
         element.style.opacity = '1';
         
-    
         var randNumber = Math.floor((Math.random() * 3) + 1);
 
         var classSelected = document.getElementById('boxTwo');
@@ -78,14 +76,12 @@ function playerOne (element)
         classSelected.classList.remove("rock");
         classSelected.classList.remove("paper");
 
-
         if(randNumber == 1){
             playerTwoMove = 'rock';
         }else if(randNumber == 2){
             playerTwoMove = 'paper';
         }else{
             playerTwoMove = 'scissor';
-            
         }
         console.log(playerTwoMove);
         classSelected.classList.add(playerTwoMove);
@@ -96,7 +92,6 @@ function playerOne (element)
     }else{
 
     }
-
 }
 
 function playerTwo (element)
@@ -111,13 +106,19 @@ function playerTwo (element)
     element.style.opacity = '1';
 
     playerTwoMove = element.innerHTML;
-    console.log(playerTwoMove);
 
     setTimeout(function(){
         if(playerOneMove !== undefined){
             update ();
         }else{
-            alert("Player 1 deve escolher!");
+            if(gameMode == undefined){
+                var message = "Choose a game mode first.";
+                showModal(message);
+            }else{
+                var message = "Player 1 must choose first!";
+                showModal(message);
+            }
+
         }
         
     }, 500);
@@ -126,9 +127,8 @@ function playerTwo (element)
 
 function update ()
 {
-    console.log('update');
     if(playerOneMove === playerTwoMove){
-        var message = 'Empate';
+        var message = 'Draw';
         showModal(message);
     }else{
         if(playerOneMove === "rock"){
