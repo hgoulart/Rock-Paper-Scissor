@@ -38,7 +38,6 @@ function playerSelect (element){
     }
 }
 
-//
 function playerOne (element){
 
     if(gameMode == undefined){
@@ -56,8 +55,6 @@ function computer1 (){
     if(gameMode == 2){
         var randNumber = Math.floor((Math.random() * choices.length) + 0);
         playerOneMove = choices[randNumber];
-    
-        console.log(playerOneMove);
     
         var bgPlayer = document.querySelectorAll('.first-player');
     
@@ -245,7 +242,6 @@ function clearGame(){
     {
         removeStars[i].remove();
     }
-    
 }
 
 function computer2(element){
@@ -259,7 +255,6 @@ function computer2(element){
     var bgPlayer = document.querySelectorAll('.first-player');
 
     element.classList.remove('fadeIn');
-    // classSelected.classList.remove('fadeIn');
 
     for(var i = 0; i < bgPlayer.length; i++)
     {
@@ -315,7 +310,6 @@ function gameTimer(element){
         
         clearInterval(counter);
         
-
         document.querySelector(".timer").innerHTML = 'Go!';
         
         setTimeout(function(){
