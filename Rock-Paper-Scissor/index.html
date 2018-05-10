@@ -34,6 +34,7 @@
             </div>
             <div class="col-md-12 ">
                 <button class="btn btn-primary" onclick="clearGame()">New Game</button>
+                <button class="btn btn-success" onclick=" gameTimer()">Play Again</button>
             </div>
         </div>
         <div class="row">
@@ -42,6 +43,8 @@
                     <li class="list-group-item first-player rock" onclick="playerOne(this)">rock</li>
                     <li class="list-group-item first-player paper" onclick="playerOne(this)">paper</li>
                     <li class="list-group-item first-player scissor" onclick="playerOne(this)">scissor</li>
+                    <li class="list-group-item first-player spock" onclick="playerOne(this)">spock</li>
+                    <li class="list-group-item first-player lizard" onclick="playerOne(this)">lizard</li>
                 </ul>
             </div>
             <div class="col-md-2 game-container">
@@ -52,9 +55,11 @@
             </div>                
             <div class="col-md-4 bg-game">
                 <ul class="player-two list-group">
-                    <li class="list-group-item second-player rock" onclick="playerTwo(this)">rock</li>
-                    <li class="list-group-item second-player paper" onclick="playerTwo(this)">paper</li>
-                    <li class="list-group-item second-player scissor" onclick="playerTwo(this)">scissor</li>
+                    <li class="list-group-item second-player rock" id="teste">rock</li>
+                    <li class="list-group-item second-player paper">paper</li>
+                    <li class="list-group-item second-player scissor">scissor</li>
+                    <li class="list-group-item second-player spock">spock</li>
+                    <li class="list-group-item second-player lizard">lizard</li>
                 </ul>
             </div>
         </div>
@@ -62,11 +67,13 @@
     <div class="modal-result hide" id="modal" onclick="closeModal()">
         <div class="content">
             <div class="close" onclick="closeModal()"><strong>x</strong></div>
+            <div class="timer"></div>
             <div class="text-result">
                 
             </div>
+            
         </div>
     </div>
-
+    
 </body>
 </html>

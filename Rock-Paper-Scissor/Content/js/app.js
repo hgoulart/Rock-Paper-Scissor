@@ -1,8 +1,10 @@
-var playerOneMove;
-var playerTwoMove;
-var gameMode;
-var checkPlayer = true;
+var playerOneMove;//defines the choice os player one
+var playerTwoMove;//defines the choice os player two
+var gameMode;//verify if game mode is player/cp or cp/cp
+var checkPlayer = true;//if has already selected a player
+var choices = ['rock', 'paper', 'scissor', 'spock', 'lizard'];//array of all game choices
 
+//selects game mode
 function playerSelect (element){
 
     if(checkPlayer){
@@ -25,64 +27,61 @@ function playerSelect (element){
         if(gameMode == 1){
             document.querySelector('.p1').innerHTML = 'Score: Player';
             document.querySelector('.p2').innerHTML = 'Score: Computer';
+            document.querySelector('.btn-success').style.display = 'none';
         }else{
             document.querySelector('.p1').innerHTML = 'Score: Computer';
             document.querySelector('.p2').innerHTML = 'Score: Computer';
+            document.querySelector('.btn-success').style.display = 'block';
+            gameTimer();
+            
         }
     }
-
-
-
 }
 
+//
 function playerOne (element){
 
     if(gameMode == undefined){
         var message = "Choose a game mode first.";
         showModal(message);
     }
-    else if(gameMode == 0){
+    else {
 
+        gameTimer(element);
+
+    }
+}
+
+function computer1 (){
+    if(gameMode == 2){
+        var randNumber = Math.floor((Math.random() * choices.length) + 0);
+        playerOneMove = choices[randNumber];
+    
+        console.log(playerOneMove);
+    
         var bgPlayer = document.querySelectorAll('.first-player');
-
+    
         for(var i = 0; i < bgPlayer.length; i++){
             bgPlayer[i].style.opacity = '0.8';
-        }
-        element.style.opacity = '1';
-        playerOneMove = element.innerHTML;
-
-    }else if(gameMode == 1){
-        computer2(element);
-    }
-}
-
-function playerTwo (element){
-
-    var bgPlayer = document.querySelectorAll('.second-player');
-
-    for(var i = 0; i < bgPlayer.length; i++)
-    {
-        bgPlayer[i].style.opacity = '0.8';
-    }
-
-    element.style.opacity = '1';
-    playerTwoMove = element.innerHTML;
-
-    setTimeout(function(){
-        if(playerOneMove !== undefined){
-            update ();
-        }else{
-            if(gameMode == undefined){
-                var message = "Choose a game mode first.";
-                showModal(message);
-            }else{
-                var message = "Player 1 must choose first!";
-                showModal(message);
+            if(bgPlayer[i].classList.contains(playerOneMove)){
+                bgPlayer[i].style.opacity = '1';
+                bgPlayer[i].classList.add('fadeIn');
+                var item = bgPlayer[i];
             }
         }
-    }, 200);
-
+       
+        var element = document.getElementById('boxOne');
+        element.style.opacity = '1';
+        element.innerHTML = playerOneMove;
+        element.classList.remove('select');
+        element.classList.add(playerOneMove);
+        computer2(item);
+    }else{
+        var message = "Choose a game mode first.";
+        showModal(message);
+    }
 }
+
 function createStar(){
 
     var node = document.createElement("LI");
@@ -107,22 +106,22 @@ function update (){
         var message = 'Draw';
         showModal(message);
     }else{
-        if(playerOneMove === "rock"){
-            if(playerTwoMove === "paper" ){
+        if( playerOneMove === "rock" ){
+            if(( playerTwoMove === "scissor") || (playerTwoMove === "lizard" )){
+ 
+                document.getElementById("score-p1").appendChild(node);
+
+                var message = "Player 1 Wins";
+                showModal(message);
+            }else{
 
                 document.getElementById("score-p2").appendChild(node);
 
                 var message = "Player 2 Wins";
-                showModal(message);
-            }else{
-
-                document.getElementById("score-p1").appendChild(node);
-
-                var message = "Player 1 Wins";
                 showModal(message);
             }
         }else if(playerOneMove === "paper"){
-            if(playerTwoMove === "rock" ){
+            if((playerTwoMove === "rock" ) || ( playerTwoMove === "spock" )){
 
                 document.getElementById("score-p1").appendChild(node);
  
@@ -135,18 +134,49 @@ function update (){
                 var message = "Player 2 Wins";
                 showModal(message);
             }
-        }else{
-            if(playerTwoMove === "rock" ){
+        }else if(playerOneMove === "scissor"){
+            
+            if(( playerTwoMove === "paper" ) || ( playerTwoMove === "lizard" )){
 
-                document.getElementById("score-p2").appendChild(node);
+                document.getElementById("score-p1").appendChild(node);
   
-                var message = "Player 2 Wins";
+                var message = "Player 1 Wins";
                 showModal(message);
             }else{
 
-                document.getElementById("score-p1").appendChild(node);
+                document.getElementById("score-p2").appendChild(node);
  
+                var message = "Player 2 Wins";
+                showModal(message);
+            }
+        }else if( playerOneMove === "spock" ){
+            
+            if(( playerTwoMove === "scissor" ) || ( playerTwoMove === "rock")){
+
+                document.getElementById("score-p1").appendChild(node);
+
                 var message = "Player 1 Wins";
+                showModal(message);
+            }else{
+
+                document.getElementById("score-p2").appendChild(node);
+
+                var message = "Player 2 Wins";
+                showModal(message);
+            }
+        }else if( playerOneMove === "lizard" ){
+            
+            if(( playerTwoMove === "spock" ) || ( playerTwoMove === "paper")){
+
+                document.getElementById("score-p1").appendChild(node);
+
+                var message = "Player 1 Wins";
+                showModal(message);
+            }else{
+
+                document.getElementById("score-p2").appendChild(node);
+
+                var message = "Player 2 Wins";
                 showModal(message);
             }
         }
@@ -172,6 +202,9 @@ function showModal(message){
 }
 function clearGame(){
     checkPlayer = true;
+    gameMode = undefined;
+
+    document.querySelector('.btn-success').style.display = 'none';
 
     document.querySelector('.p1').innerHTML = 'Score:';
     document.querySelector('.p2').innerHTML = 'Score:';
@@ -185,7 +218,7 @@ function clearGame(){
     }
 
     var classSelected = document.getElementById('boxOne');
-    classSelected.classList.remove("select", "scissor","rock","paper");
+    classSelected.classList.remove( "select", "scissor","rock","paper", "spock", "lizard", "fadeIn" );
     classSelected.classList.add('select');
 
     var bgPlayer = document.querySelectorAll('.first-player');
@@ -196,10 +229,10 @@ function clearGame(){
     }
 
     var classSelected = document.getElementById('boxTwo');
-    classSelected.classList.remove("select", "scissor","rock","paper");
-    classSelected.classList.add('select');
+    classSelected.classList.remove( 'select', 'scissor', 'rock', 'paper', 'spock', 'lizard', "fadeIn" );
+    classSelected.classList.add( 'select' );
 
-    var bgPlayer = document.querySelectorAll('.second-player');
+    var bgPlayer = document.querySelectorAll( '.second-player' );
 
     for(var i = 0; i < bgPlayer.length; i++)
     {
@@ -216,35 +249,86 @@ function clearGame(){
 }
 
 function computer2(element){
-
+    
     playerOneMove = element.innerHTML;
-
-    var classSelected = document.getElementById('boxOne');
-    classSelected.classList.remove("select", "scissor","rock","paper");
-    classSelected.classList.add(playerOneMove);
-
+    var classOneSelected = document.getElementById('boxOne');
+    classOneSelected.classList.remove("select", "scissor","rock","paper", "spock", "lizard", "fadeIn");
+    classOneSelected.classList.add(playerOneMove);
+    var randNumber = Math.floor((Math.random() * choices.length) + 0);
+    playerTwoMove = choices[randNumber];
     var bgPlayer = document.querySelectorAll('.first-player');
+
+    element.classList.remove('fadeIn');
+    // classSelected.classList.remove('fadeIn');
 
     for(var i = 0; i < bgPlayer.length; i++)
     {
         bgPlayer[i].style.opacity = '0.8';
+        bgPlayer[i].classList.remove('fadeIn');
     }
-
     element.style.opacity = '1';
-    var randNumber = Math.floor((Math.random() * 3) + 1);
+    classOneSelected.style.opacity = '1';
 
-    var classSelected = document.getElementById('boxTwo');
-    classSelected.classList.remove("select", "scissor","rock","paper");
-    
-    if(randNumber == 1){
-        playerTwoMove = 'rock';
-    }else if(randNumber == 2){
-        playerTwoMove = 'paper';
-    }else{
-        playerTwoMove = 'scissor';
+    var classTwoSelected = document.getElementById('boxTwo');
+    classTwoSelected.classList.remove( 'select', 'scissor', 'rock', 'paper', 'spock', 'lizard', "fadeIn" );
+    classTwoSelected.classList.add(playerTwoMove);
+
+    var hasClass = document.querySelectorAll('.second-player');
+    var index;
+    for(var i = 0; i < hasClass.length; i++)
+    {
+        hasClass[i].classList.remove('fadeIn');
+        hasClass[i].style.opacity = '0.8';
+        if(hasClass[i].classList.contains(playerTwoMove)){
+            hasClass[i].style.opacity = '1';
+            index = i;
+        }
     }
-    classSelected.classList.add(playerTwoMove);
+
     setTimeout(function(){
         update ();
-    }, 500)
+        hasClass[index].classList.add('fadeIn');
+        element.classList.add('fadeIn');
+        classOneSelected.classList.add('fadeIn');
+        classTwoSelected.classList.add('fadeIn');
+    }, 500);
+}
+function gameTimer(element){
+    document.querySelector(".timer").style.display = 'block'; 
+    var counter = setInterval(function(){ myTimer() }, 1000);
+    var count = 3;
+    showModal('');
+    function myTimer() {
+               
+        var d = new Date();
+        var s = d.getSeconds();
+        
+        if(count < 1){
+            stopTimer();
+        }else{
+            document.querySelector(".timer").innerHTML = count;
+            count--;
+        }
+    }
+    
+    function stopTimer() {
+        
+        clearInterval(counter);
+        
+
+        document.querySelector(".timer").innerHTML = 'Go!';
+        
+        setTimeout(function(){
+            closeModal();
+            if(gameMode == 2){
+                computer1();
+                document.querySelector(".timer").innerHTML = '';
+                document.querySelector(".timer").style.display = 'none';
+            }else{
+                computer2(element);
+                document.querySelector(".timer").innerHTML = '';
+                document.querySelector(".timer").style.display = 'none';
+            }
+        }, 1000);
+    }
 }

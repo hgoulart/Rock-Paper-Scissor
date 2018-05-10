@@ -21,6 +21,20 @@ h1{
     text-align: center;
     padding: 20px;
 }
+.text-result{
+    font-weight: 700;
+}
+.timer{
+    font-size: 40px;
+}
+.hand{
+    -webkit-animation: showHand 1s infinite; 
+    animation: showHand 1s infinite;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
 ul{
     list-style: none;
 }
@@ -43,48 +57,64 @@ ul{
 }
 .list-group-item{
     border: 1px solid transparent;
-    border-radius: 50%;
+    /* border-radius: 50%; */
+    background-color: tan;
 }
 .list-group-item:first-child, .list-group-item:last-child{
     border: 1px solid transparent;
-    border-radius: 50%;
+    /* border-radius: 50%; */
+    background-color: transparent;
+}
+.list-group-item:last-child:focus{
+    background-color: transparent;
+}
+.list-group-item:focus, .list-group-item:hover{
+    background-color: transparent;
 }
 .first-player, .second-player{
     width: 78px;
     height: 78px;
-    background-image: url( '../images/sprite.png' );
-    background-size: 485px;
+    background-size: 78px 78px;
+    background-position: center;
     color: transparent;
     border: 1px solid transparent;
-    border-radius: 50%;
+    /* border-radius: 50%; */
     opacity: 0.8;
     background-color: transparent;
-    transition: all 0.2s ease-in-out;
-}
-.first-player:hover{
-    opacity: 1;
-    transform: translate3d(15px, 0px, 0px);
+    background-repeat: no-repeat;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
-.second-player:hover{
-    opacity: 1;
-    transform: translate3d(-15px, 0px, 0px);
-    cursor: pointer;
+
+
+ .second-player.fadeIn{
+    -webkit-animation: fadeIn 1s none; 
+    animation: fadeIn 1s none;
+}
+.first-player.fadeIn{
+    -webkit-animation: fadeIn 1s none; 
+    animation: fadeIn 1s none;
 }
 .scissor {
-    background-position:  -75px 0px;
+    background-image: url( '../images/scissor.png' );
 }
 .rock {
-    background-position: 183px 0px;
+    background-image: url( '../images/rock.png' );
 }
 .paper {
-    background-position: 258px 0px;
+    background-image: url( '../images/paper.png' );
+}
+.spock {
+    background-image: url( '../images/spock.png' );
+}
+.lizard {
+    background-image: url( '../images/lizard.png' );
 }
 .score{
     padding: 0;
 }
 .select{
-    background-position: 110px 0px;
+    background-image: url( '../images/select.png' );
 }
 .score li{
     display: inline-block;
@@ -134,4 +164,35 @@ img{
 img.anime{
     height: 20px;
     width: 20px;
+}
+@keyframes fadeIn {
+    0%   {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    40%   {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    60%   {
+        opacity: 0.6;
+        transform: scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+@keyframes showHand {
+    0%   {
+        opacity: 0;
+        /* transform: scale(0.5); */
+    }
+    100% {
+        opacity: 1;
+        /* transform: scale(1); */
+    }
+}
+.btn-success{
+    display: none;
 }
